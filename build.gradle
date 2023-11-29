@@ -18,7 +18,10 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '3.3.0'
+	runtimeOnly group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '3.3.0'
+	runtimeOnly group: 'org.postgresql', name: 'postgresql', version: '42.7.0'
+	implementation group: 'com.mysql', name: 'mysql-connector-j', version: '8.2.0'
+
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
