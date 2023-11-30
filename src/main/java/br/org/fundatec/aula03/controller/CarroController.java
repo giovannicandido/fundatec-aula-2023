@@ -1,5 +1,7 @@
-package br.org.fundatec.aula03;
+package br.org.fundatec.aula03.controller;
 
+import br.org.fundatec.aula03.model.Carro;
+import br.org.fundatec.aula03.service.CarroService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
