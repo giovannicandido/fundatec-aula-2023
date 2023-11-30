@@ -4,7 +4,6 @@ package br.org.fundatec.aula03;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class CarroService {
@@ -16,21 +15,25 @@ public class CarroService {
     }
 
     public List<Carro> listAllCarros() {
-        return carroRepository.listAllCarros();
+        return carroRepository.findAll();
     }
 
     public void saveCarro(Carro carro) {
-        carroRepository.saveCarro(carro);
+        carroRepository.save(carro);
     }
 
     public void deleteCarro(String placa) {
-        carroRepository.deleteCarro(placa);
+        carroRepository.deleteById(placa);
 
     }
 
     public void editCarro(String codigoPlaca,
                           Carro carro) {
-        carroRepository.editCarro(codigoPlaca, carro);
+        carroRepository.findById(codigoPlaca)
+                .orElseThrow(() -> new RuntimeException("Carro com de placa " + codigoPlaca + " não existe"));
+
+        carro.setPlaca(codigoPlaca);
+        carroRepository.save(carro);
 
     }
 
