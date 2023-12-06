@@ -2,9 +2,11 @@ package br.org.fundatec.aula03.controller.request;
 
 import br.org.fundatec.aula03.model.Endereco;
 import br.org.fundatec.aula03.model.Loja;
+import jakarta.validation.constraints.NotBlank;
 
 public class LojaRequest {
 
+    @NotBlank
     private String nome;
 
     private Integer numeroCarros;

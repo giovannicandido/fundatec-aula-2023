@@ -4,6 +4,7 @@ import br.org.fundatec.aula03.controller.request.LojaRequest;
 import br.org.fundatec.aula03.controller.response.LojaResponse;
 import br.org.fundatec.aula03.model.Loja;
 import br.org.fundatec.aula03.service.LojaService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,7 @@ public class LojaController {
     }
 
     @PostMapping
-    public LojaResponse create(@RequestBody LojaRequest loja) {
+    public LojaResponse create(@RequestBody @Valid LojaRequest loja) {
 
         return LojaResponse.of(lojaService
                 .create(loja.toModel())
