@@ -18,6 +18,16 @@ public class Loja {
     @OneToOne(mappedBy = "loja", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private Endereco endereco;
 
+    public Loja(Long id, String nome, Integer numeroCarros, Endereco endereco) {
+        this.id = id;
+        this.nome = nome;
+        this.numeroCarros = numeroCarros;
+        this.endereco = endereco;
+    }
+
+    public Loja() {
+    }
+
     public Long getId() {
         return id;
     }

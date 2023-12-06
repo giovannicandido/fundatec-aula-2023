@@ -1,44 +1,40 @@
-package br.org.fundatec.aula03.model;
+package br.org.fundatec.aula03.controller.response;
 
-import jakarta.persistence.*;
+import br.org.fundatec.aula03.model.Endereco;
+import br.org.fundatec.aula03.model.Estado;
 
-@Entity
-public class Endereco {
+public class EnderecoResponse {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(length = 80, nullable = false)
     private String rua;
 
-    @Column(length = 80, nullable = false)
     private String bairro;
 
-    @Column(length = 40, nullable = false)
     private String cidade;
 
-    @Enumerated(EnumType.STRING)
-    @Column(length = 2, nullable = false)
     private Estado estado;
 
-    @Column(nullable = false)
     private Integer numero;
 
-    @OneToOne
-    @JoinColumn(name = "loja_id")
-    private Loja loja;
+    public static EnderecoResponse of(Endereco endereco) {
+        return new EnderecoResponse(
+                endereco.getId(),
+                endereco.getRua(),
+                endereco.getBairro(),
+                endereco.getCidade(),
+                endereco.getEstado(),
+                endereco.getNumero()
+        );
+    }
 
-    public Endereco(Long id, String rua, String bairro, String cidade, Estado estado, Integer numero) {
+    public EnderecoResponse(Long id, String rua, String bairro, String cidade, Estado estado, Integer numero) {
         this.id = id;
         this.rua = rua;
         this.bairro = bairro;
         this.cidade = cidade;
         this.estado = estado;
         this.numero = numero;
-    }
-
-    public Endereco() {
     }
 
     public Long getId() {
@@ -89,11 +85,5 @@ public class Endereco {
         this.numero = numero;
     }
 
-    public Loja getLoja() {
-        return loja;
-    }
 
-    public void setLoja(Loja loja) {
-        this.loja = loja;
-    }
 }
