@@ -40,4 +40,8 @@ public class CarroService {
     }
 
 
+    public Carro getCarroByPlaca(String placa) {
+        return this.carroRepository.findById(placa)
+                .orElseThrow(() -> new RuntimeException("Carro de placa " + placa + " não existe"));
+    }
 }

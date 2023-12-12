@@ -34,6 +34,11 @@ public class CarroController {
 
     }
 
+    @GetMapping(path = "/carros/{placa}")
+    public Carro getCarroByPlaca(@PathVariable("placa") String placa) {
+        return carroService.getCarroByPlaca(placa);
+    }
+
     @PutMapping(path = "/carros/{codigo-placa}")
     public void editCarro(@PathVariable(name = "codigo-placa") String codigoPlaca,
                           @RequestBody Carro carro) {
